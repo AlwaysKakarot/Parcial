@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Juegos - Tienda Free to Play</title>
+    <link rel="stylesheet" href="parcial.css">
+</head>
+<body>
+
+    <header>
+        <h1>Tienda Free to Play</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="juegos.html">Juegos</a>
+            <a href="registro.html">Registro Desarrolladores</a>
+        </nav>
+    </header>
+
+    <section id="games">
+        <h2>Lista de Juegos</h2>
+        <div class="filters">
+            <button onclick="filterGames('all')">Todos</button>
+            <button onclick="filterGames('accion')">Acción</button>
+            <button onclick="filterGames('aventura')">Aventura</button>
+            <button onclick="filterGames('gratis')">Juego Gratis</button>
+            <button onclick="filterGames('deportes')">Deportes</button>
+        </div>
+
+        <!-- Lista de juegos -->
+        <div class="game-list">
+            <!-- Juegos de Acción -->
+            <div class="game accion">
+                <img src="imagenes/dbfz_game-thumbnail.jpg" alt="Juego Acción 1" class="game-image">
+                <div class="game-info">
+                    <h3>Dragon Ball Fighters Z</h3>
+                    <p class="game-description">Un emocionante juego de acción en un mundo futurista.</p>
+                    <span class="favorite" onclick="toggleFavorite(this)">☆</span>
+                    <button class="detail-button" onclick="showGameDetail('Dragon Ball Fighters Z', 'Un emocionante juego de acción en un mundo futurista.')">Ver Detalles</button>
+                </div>
+            </div>
+
+            <!-- Juegos de Aventura -->
+            <div class="game aventura">
+                <img src="imagenes/images (1).jpg" alt="Juego Aventura 1" class="game-image">
+                <div class="game-info">
+                    <h3>Fortnite</h3>
+                    <p class="game-description">Una fantástica aventura en un mundo mágico.</p>
+                    <span class="favorite" onclick="toggleFavorite(this)">☆</span>
+                    <button class="detail-button" onclick="showGameDetail('Fortnite', 'Una fantástica aventura en un mundo mágico.')">Ver Detalles</button>
+                </div>
+            </div>
+
+            <!-- Juegos Gratis -->
+            <div class="game gratis">
+                <img src="imagenes/valorant.png" alt="Juego Gratis 1" class="game-image">
+                <div class="game-info">
+                    <h3>Valorant</h3>
+                    <p class="game-description">Un juego gratuito de supervivencia en un mundo abierto.</p>
+                    <span class="favorite" onclick="toggleFavorite(this)">☆</span>
+                    <button class="detail-button" onclick="showGameDetail('Valorant', 'Un juego gratuito de supervivencia en un mundo abierto.')">Ver Detalles</button>
+                    <button class="play-button" onclick="location.href='detalle-juego.html'">Jugar</button>
+                </div>
+            </div>
+
+            <!-- Juegos de Deportes -->
+            <div class="game deportes">
+                <img src="imagenes/images.jpg" alt="Juego Deportes 1" class="game-image">
+                <div class="game-info">
+                    <h3>eFootball 2024</h3>
+                    <p class="game-description">Compite en emocionantes partidos de fútbol en línea.</p>
+                    <span class="favorite" onclick="toggleFavorite(this)">☆</span>
+                    <button class="detail-button" onclick="showGameDetail('eFootball 2024', 'Compite en emocionantes partidos de fútbol en línea.')">Ver Detalles</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="parcial.js"></script>
+    <script>
+        function showGameDetail(gameName, description) {
+            alert(`${gameName}: ${description}`);
+        }
+
+        function filterGames(category) {
+            const games = document.querySelectorAll('.game');
+            games.forEach(game => {
+                if (category === 'all' || game.classList.contains(category)) {
+                    game.style.display = 'block';
+                } else {
+                    game.style.display = 'none';
+                }
+            });
+        }
+
+        function toggleFavorite(star) {
+            star.textContent = star.textContent === '☆' ? '★' : '☆';
+        }
+    </script>
+</body>
+</html>

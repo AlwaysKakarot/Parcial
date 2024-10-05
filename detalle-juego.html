@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Juego</title>
+    <link rel="stylesheet" href="parcial.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            background-color: #f0f0f0; 
+            margin: 0;
+        }
+
+        #gameArea {
+            width: 500px; 
+            height: 500px; 
+            background-color: #331feb; 
+            border: 2px solid #333; 
+            position: relative; 
+            overflow: hidden; 
+        }
+
+        #player {
+            width: 30px; 
+            height: 30px; 
+            background-color: red; 
+            position: absolute; 
+            top: 235px; 
+            left: 235px; 
+        }
+    </style>
+</head>
+<body>
+
+    <div id="gameArea">
+        <div id="player"></div>
+    </div>
+
+    <script>
+        const player = document.getElementById('player');
+        let posX = 235; // Posición inicial en X
+        let posY = 235; 
+
+        function movePlayer(e) {
+            const step = 5; 
+
+            switch (e.key) {
+                case "ArrowUp":
+                    if (posY > 0) posY -= step; 
+                    break;
+                case "ArrowDown":
+                    if (posY < 470) posY += step; 
+                    break;
+                case "ArrowLeft":
+                    if (posX > 0) posX -= step; 
+                    break;
+                case "ArrowRight":
+                    if (posX < 470) posX += step; 
+                    break;
+            }
+
+            player.style.top = posY + 'px'; 
+            player.style.left = posX + 'px'; 
+        }
+
+        window.addEventListener('keydown', movePlayer);
+    </script>
+</body>
+</html>
